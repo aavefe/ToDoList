@@ -1,0 +1,223 @@
+body{
+    margin: 0;
+}
+div.mensajerror{
+    font-size: 15px;
+    color: red;
+    margin-top: 10px;
+    margin-left: 19%;
+    margin-bottom: 10px;
+    display: none;
+}
+div.titulo{
+    background-color:black;
+    padding: 5px;
+}
+div.titulo1{
+    text-align: center;
+    margin: 10px;
+    color: white;
+    font-family: sans-serif;
+}
+div.content{
+    display: flex;
+    flex-direction: column;
+    
+}
+div.titulo2{
+    font-family: sans-serif;
+    display: flex;
+    margin-left: 24%;
+    margin-top: 5px;
+}
+div.numtareas{
+    color:rgb(37, 117, 192);
+    margin-left: 5px;
+    
+}
+
+div.creatarea{
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    
+}
+div.listatareas{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+input.nuevatarea{
+    border: 2px solid black;
+    width: 42%;
+    height: 30px;
+    font-size: 20px;
+    background-color:rgb(237, 237, 237);
+    background-image: url('../img/lista.png');
+    background-size: 25px 25px;
+    background-position: 5px 4px;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+}
+input.nuevatarea:hover{
+    background-color:rgb(218, 216, 216);
+}
+input.nuevatarea:focus{
+    background-color:rgb(218, 216, 216);
+}
+button.añadir{
+    background-color: black;
+    color: white;
+    height: 36px;
+    font-size: 15px;
+    border-left: none;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+}
+button.añadir:hover{
+    background-color:rgb(58, 57, 57) ;
+}
+div.divtareas{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+}
+div.divtexto{
+    font-size: 20px;
+    margin-right: 10px;
+    border-bottom: 2px solid rgb(184, 181, 181);
+    width: 80%;
+    animation-duration: 1s;
+    animation-name: aparecer;
+}
+button.botonmarcar{
+    margin-right: 10px;
+    border: none;
+    background-color:green;
+    color: white;
+    font-weight: bold;
+    animation-duration: 1s;
+    animation-name: aparecerbotonmarcar;
+}
+button.botonmarcar:hover{
+    background-color:rgb(63, 167, 12);
+}
+button.botoneliminar{
+    margin-right: 10px;
+    border: none;
+    background-color:red;
+    color: white;
+    font-weight: bold;
+    animation-duration: 1s;
+    animation-name: aparecerbotoneliminar;
+}
+button.botoneliminar:hover{
+    background-color:rgb(245, 95, 95);
+    color: white;
+}
+button.botoneditar{
+    border: none;
+    background-color:orange;
+    color: white;
+    font-weight: bold;
+    animation-duration: 1s;
+    animation-name: aparecerbotoneditar;
+}
+button.botoneditar:hover{
+    background-color:rgb(245, 193, 95);
+    color: white;
+}
+input.editarinput{
+    width: 20%;
+    border: 2px solid black;
+    height: 19px;
+    font-size: 19px;
+    background-color:rgb(237, 237, 237);
+    background-image: url('../img/lapiz.png');
+    background-size: 15px 15px;
+    background-position: 5px 3px;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    /* animation-duration: 1s;
+    animation-name: aparecerinput; */
+}
+input.editarinput:focus{
+    width:60%;
+}
+
+div.divbotones{
+    display: flex;
+}
+div.contenedor{
+    margin-left: 24%;
+    margin-right: 24%;
+}
+@keyframes aparecer {
+    from{
+        color: transparent;
+        background-color:transparent ;
+        width: 0;
+    }
+    to{
+        color: black;
+        background-color:initial;
+        width: 100%;
+    }
+}
+
+@keyframes aparecerbotonmarcar {
+    from{
+        color: transparent;
+        background-color:transparent ;
+    }
+    to{
+        color: white;
+        background-color:green;
+    }
+}
+
+@keyframes aparecerbotoneliminar{
+    from{
+        color: transparent;
+        background-color:transparent ;
+    }
+    to{
+        color: white;
+        background-color:red;
+    }
+}
+@keyframes aparecerbotoneditar{
+    from{
+        color: transparent;
+        background-color:transparent ;
+    }
+    to{
+        color: white;
+        background-color:orange;
+    }
+}
+
+/* @keyframes aparecerinput {
+    from {
+      margin-left: 40%;
+      
+    }
+    to {
+      margin-left: 0%;
+      
+    }
+  } */
+
+/* 
+  @keyframes onfocus{
+      from{
+        width: 20%;
+      }
+      to{
+        width: 50%
+      }
+  } */

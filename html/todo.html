@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script>  
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de tareas</title>
+</head>
+<body>
+    <div class="todo">
+
+        <div class="titulo">
+            <div class="titulo1">
+                <h1>Lista de cosas que hacer</h1>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="creatarea">
+                <input  class="nuevatarea" id="nuevatarea" placeholder="Escribe una tarea...">
+                <button type="button" class="añadir" id="añadir" onclick="escribirTarea()">Añadir tarea</button>
+            </div>
+
+            <div class="listatareas">
+                <div class="titulo2">Tareas: 
+                    <div class="numtareas" id="numtareas">0</div>
+                </div>
+                <div class="mensajerror" id="mensajerror">Tienes que escribir una tarea.</div>
+                <div class="contenedor" id="contenedor"></div>
+            </div>
+        </div>
+</body>
+</html>

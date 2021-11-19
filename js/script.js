@@ -18,12 +18,26 @@ onload=function recuperarTareas(objetorecuperado){
         for(i = 0; i<objetorecuperado.length; i++){
                 valor = objetorecuperado[i].nombre;
                 creaTareas();
+                var botonmarcar = document.getElementById("botonmarcar"+objetorecuperado[i].nombre);
                 if(objetorecuperado[i].estado === "Hecha"){
                         document.getElementById("divtexto"+objetorecuperado[i].nombre).style.textDecoration = "line-through";
-                        document.getElementById("botonmarcar"+objetorecuperado[i].nombre).innerHTML = "Desmarcar";
+                        botonmarcar.innerHTML = "Desmarcar";
+                        botonmarcar.style.backgroundColor="blue";
                         var textomarcado = document.getElementById("divtexto"+objetorecuperado[i].nombre).innerHTML;
                         var estadotarea = tareas.find(element => element.nombre === textomarcado);
                         estadotarea.estado = "Hecha";
+                        botonmarcar.onmouseenter=function hoverBotonmarcar(){
+                                botonmarcar.style.backgroundColor="#5872A8";
+                        }
+                        botonmarcar.onmouseout=function nohoverBotonmarcar(){
+                                botonmarcar.style.backgroundColor="blue";
+                        }
+                        botonmarcar.animate([ 
+                                {color: "transparent",
+                                backgroundColor: "transparent"},
+                                {color: "white",
+                                backgroundColor: "blue"}
+                                ],1000);
                 }
         }                
 }     
@@ -46,6 +60,7 @@ function escribirTarea(){
 }
 
 function creaTareas(){
+        
         
         var div = document.createElement("div");     
         var marcar = document.createElement("button");
@@ -89,11 +104,29 @@ function creaTareas(){
         
         contador++;
 
+        
+        botonmarcar.animate([ 
+                {color: "transparent",
+                backgroundColor: "transparent"},
+                {color: "white",
+                backgroundColor: "green"}
+                ],1000);
+        
+                
+        
+
         botonmarcar.onclick=function marcarTarea(){
                 if(botonmarcar.innerHTML === "Marcar"){
                         document.getElementById("mensajerror").style.display = "none";
                         divtexto.style.textDecoration = "line-through";
                         botonmarcar.innerHTML = "Desmarcar";
+                        botonmarcar.style.backgroundColor="blue";
+                        botonmarcar.onmouseenter=function hoverBotonmarcar(){
+                                botonmarcar.style.backgroundColor="#5872A8";
+                        }
+                        botonmarcar.onmouseout=function nohoverBotonmarcar(){
+                                botonmarcar.style.backgroundColor="blue";
+                        }
                         tarearray = tareas.find(element => element.id === hiddenvalue.value);
                         tarearray.estado = "Hecha";
 
@@ -102,10 +135,16 @@ function creaTareas(){
                                 {textDecorationColor: 'initial',}
                                 ],500);
 
-
                 }else{
                         document.getElementById("mensajerror").style.display = "none";
-                        botonmarcar.innerHTML = "Marcar";    
+                        botonmarcar.innerHTML = "Marcar";
+                        botonmarcar.style.backgroundColor="green";
+                        botonmarcar.onmouseenter=function hoverBotonmarcar(){
+                                botonmarcar.style.backgroundColor="#3FA70C";
+                        }   
+                        botonmarcar.onmouseout=function nohoverBotonmarcar(){
+                                botonmarcar.style.backgroundColor="green";
+                        } 
                         tarearray = tareas.find(element => element.id === hiddenvalue.value);
                         tarearray.estado = "No hecha";   
                         divtexto.animate([ 
@@ -131,20 +170,28 @@ function creaTareas(){
                 });
                 document.getElementById("numtareas").innerHTML = tareas.length;
                 
-
                 divtexto.animate([
                         {width: "100%",
                         color: "black"},
                         {color: "transparent",
                         width: "0"}
                         ],500);
-
-                botonmarcar.animate([ 
-                        {color: "white",
-                        backgroundColor: "green"},
-                        {color: "transparent",
-                        backgroundColor: "transparent"}
-                        ],500);
+                if(botonmarcar.innerHTML=="Marcar"){
+                        botonmarcar.animate([ 
+                                {color: "white",
+                                backgroundColor: "green"},
+                                {color: "transparent",
+                                backgroundColor: "transparent"}
+                                ],500);
+                }else{
+                        botonmarcar.animate([ 
+                                {color: "white",
+                                backgroundColor: "blue"},
+                                {color: "transparent",
+                                backgroundColor: "transparent"}
+                                ],500);
+                }
+                
 
                 botoneliminar.animate([ 
                         {color: "white",
@@ -158,7 +205,8 @@ function creaTareas(){
                         backgroundColor: "orange"},
                         {color: "transparent",
                         backgroundColor: "transparent"}
-                        ],500);                
+                        ],500);      
+                
 
                 siguientediv = divtodo.nextSibling;
 
@@ -178,23 +226,38 @@ function creaTareas(){
                 setTimeout(borrarDiv, 390);    
         }
 
-        botoneditar.onclick=function editarTarea(){
+
+        botoneditar.onclick=editarTarea;
+        divtexto.onclick=editarTarea;
+        
+        
+        function editarTarea(){
                 document.getElementById("mensajerror").style.display = "none";
                 editarinput.style.display = "block";
                 divtexto.style.display = "none";
                 botoneditar.innerHTML = "Guardar";
                 editarinput.value = divtexto.innerHTML;
+
                 editarinput.animate([ 
                         {marginLeft: "40%"},
                         {marginLeft: "0%"}
-                        ],500);  
+                        ],500); 
                         
-                botonmarcar.animate([ 
-                        {color: "white",
-                        backgroundColor: "green"},
-                        {color: "transparent",
-                        backgroundColor: "transparent"}
-                        ],500);
+                if(botonmarcar.innerHTML=="Marcar"){
+                        botonmarcar.animate([ 
+                                {color: "white",
+                                backgroundColor: "green"},
+                                {color: "transparent",
+                                backgroundColor: "transparent"}
+                                ],500);
+                }else{
+                        botonmarcar.animate([ 
+                                {color: "white",
+                                backgroundColor: "blue"},
+                                {color: "transparent",
+                                backgroundColor: "transparent"}
+                                ],500);
+                }
                 
                 function delayBoton(){
                         botonmarcar.style.display= "none";
@@ -222,8 +285,7 @@ function creaTareas(){
                         }
                 }
         }
-        
-        
+           
         tareas.push({
                 "id": hiddenvalue.value,
                 "nombre": divtexto.innerHTML,

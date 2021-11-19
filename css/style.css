@@ -96,18 +96,20 @@ div.divtexto{
 }
 button.botonmarcar{
     margin-right: 10px;
+    width: 80px;
     border: none;
     background-color:green;
     color: white;
     font-weight: bold;
-    animation-duration: 1s;
-    animation-name: aparecerbotonmarcar;
+    /* animation-duration: 1s;
+    animation-name: aparecerbotonmarcar; */
 }
 button.botonmarcar:hover{
     background-color:rgb(63, 167, 12);
 }
 button.botoneliminar{
     margin-right: 10px;
+    width: 80px;
     border: none;
     background-color:red;
     color: white;
@@ -121,6 +123,7 @@ button.botoneliminar:hover{
 }
 button.botoneditar{
     border: none;
+    width: 80px;
     background-color:orange;
     color: white;
     font-weight: bold;
@@ -142,8 +145,6 @@ input.editarinput{
     background-position: 5px 3px;
     background-repeat: no-repeat;
     padding-left: 30px;
-    /* animation-duration: 1s;
-    animation-name: aparecerinput; */
 }
 input.editarinput:focus{
     width:60%;
@@ -169,7 +170,7 @@ div.contenedor{
     }
 }
 
-@keyframes aparecerbotonmarcar {
+/* @keyframes aparecerbotonmarcar {
     from{
         color: transparent;
         background-color:transparent ;
@@ -178,7 +179,7 @@ div.contenedor{
         color: white;
         background-color:green;
     }
-}
+} */
 
 @keyframes aparecerbotoneliminar{
     from{
@@ -201,23 +202,48 @@ div.contenedor{
     }
 }
 
-/* @keyframes aparecerinput {
-    from {
-      margin-left: 40%;
-      
-    }
-    to {
-      margin-left: 0%;
-      
-    }
-  } */
+@media only screen and (max-width: 768px){
 
-/* 
-  @keyframes onfocus{
-      from{
-        width: 20%;
-      }
-      to{
-        width: 50%
-      }
-  } */
+
+    input.editarinput{
+        margin-bottom: 7px;
+        background-image: none;
+        text-align: center;
+        padding: 0px;
+        width: 30%;
+    }
+    input.editarinput:focus{
+        width:40%;
+    }
+    div.divtexto{
+        border-bottom: none;
+        margin-bottom: 7px;
+        text-align: center;
+        margin-right: 0px;
+    }
+    div.divtareas{
+        flex-direction:column;
+        border-bottom: 2px solid rgb(184, 181, 181);
+        padding-bottom: 10px;
+        align-items:center;
+    }
+    div.titulo2{
+        margin:0px;
+        margin-left: 16%;
+    }
+
+    button.botonmarcar{
+        height: 24px;
+    }
+    button.botoneliminar{
+        height: 24px;
+    }
+    button.botoneditar{
+        height: 24px;
+    }
+    div.contenedor{
+        align-self: center;
+        margin: 0px;
+        width: 100%;
+    }
+}
